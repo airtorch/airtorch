@@ -1,10 +1,10 @@
-# kela
+# airtorch
 
-[![Github Actions Status](https://github.com/github_username/kela/workflows/Build/badge.svg)](https://github.com/github_username/kela/actions/workflows/build.yml)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/github_username/kela/main?urlpath=lab)
-kela khao, lambe ho jao
+[![Github Actions Status](https://github.com/github_username/airtorch/workflows/Build/badge.svg)](https://github.com/github_username/airtorch/actions/workflows/build.yml)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/github_username/airtorch/main?urlpath=lab)
+airtorch khao, lambe ho jao
 
-This extension is composed of a Python package named `kela`
-for the server extension and a NPM package named `kela`
+This extension is composed of a Python package named `airtorch`
+for the server extension and a NPM package named `airtorch`
 for the frontend extension.
 
 ## Requirements
@@ -16,7 +16,7 @@ for the frontend extension.
 To install the extension, execute:
 
 ```bash
-pip install kela
+pip install airtorch
 ```
 
 ## Uninstall
@@ -24,7 +24,7 @@ pip install kela
 To remove the extension, execute:
 
 ```bash
-pip uninstall kela
+pip uninstall airtorch
 ```
 
 ## Troubleshoot
@@ -55,13 +55,13 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Change directory to the kela directory
+# Change directory to the airtorch directory
 # Install package in development mode
 pip install -e ".[test]"
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
 # Server extension must be manually installed in develop mode
-jupyter server extension enable kela
+jupyter server extension enable airtorch
 # Rebuild extension Typescript source after making changes
 jlpm build
 ```
@@ -87,13 +87,13 @@ jupyter lab build --minimize=False
 
 ```bash
 # Server extension must be manually disabled in develop mode
-jupyter server extension disable kela
-pip uninstall kela
+jupyter server extension disable airtorch
+pip uninstall airtorch
 ```
 
 In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
-folder is located. Then you can remove the symlink named `kela` within that folder.
+folder is located. Then you can remove the symlink named `airtorch` within that folder.
 
 ### Testing the extension
 
@@ -112,7 +112,7 @@ jupyter labextension develop . --overwrite
 To execute them, run:
 
 ```sh
-pytest -vv -r ap --cov kela
+pytest -vv -r ap --cov airtorch
 ```
 
 #### Frontend tests
