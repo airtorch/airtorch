@@ -2,7 +2,7 @@ import json
 import urllib
 import uuid
 import requests
-
+import os
 from jupyter_server.base.handlers import APIHandler
 from jupyter_server.utils import url_path_join
 import tornado 
@@ -52,7 +52,7 @@ class LoginHandler(APIHandler):
             user_password = input_data["password"]
             data_to_send = {"email": user_email,"password":user_password}
             print('yahan to cors k koi issue nahi hai 1')
-            api_url = 'https://localhost:8000/loginAPI'
+            api_url = 'http://localhost:8000/loginAPI'
             response = requests.post(api_url,json=data_to_send,verify=False)
             print('yahan to cors k koi issue nahi hai 2')
             response = response.json()
@@ -142,9 +142,12 @@ class TorchHandler(APIHandler):
                 "lineCode": input_data["lineCode"],"serverPath": input_data["serverPath"],
                 "filePath": input_data["filePath"],"baseUrl": input_data["baseUrl"], "treeUrl": input_data["treeUrl"],
                 "creator":user_id}
-
-                api_url = 'https://localhost:8000/api_add_airtorchs/'
-                response = requests.post(api_url,json=todo,verify=False,headers={'Authorization': access_token_id})
+                file_name = os.path.basename(input_data["filePath"])
+                file      = os.path.join(input_data["serverPath"], file_name)
+                file      = os.path.expanduser(file)
+                print(file)
+                api_url = 'http://localhost:8000/api_add_airtorchs/'
+                response = requests.post(api_url,data=todo, files = {'notebook': open(file)}, verify=False,headers={'Authorization': access_token_id})
                 response.status_code
         except:
                 self.finish(json.dumps({"data": "Exception hit in torch method"}))
