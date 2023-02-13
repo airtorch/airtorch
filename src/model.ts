@@ -103,7 +103,8 @@ export class AirtorchExtension{
           filePath: '',
           serverPath: '',
           baseUrl: '',
-          treeUrl: ''
+          treeUrl: '',
+          variableType: ''
         }
 
         if (options!=undefined){
@@ -127,7 +128,10 @@ export class AirtorchExtension{
           }
           if(options.treeUrl){
             body.treeUrl = options.treeUrl
-          }                              
+          }
+          if(options.variableType){
+            body.variableType = options.variableType
+          }                               
         }
 
         const data = await requestAPI<any>(
