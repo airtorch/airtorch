@@ -169,13 +169,13 @@ ITorchDialogState
         error: '',
         lineCode: '',
         lineNumber: -1,
-        variableType: "0"
+        variableType: "Table"
       };
   }
 
   componentDidMount(): void {
     try {
-      this.setState({ name: '' , variableType: "0"});
+      this.setState({ name: '' , variableType: "Table"});
     } catch (err) {
       console.error(err);
     }
@@ -226,8 +226,8 @@ ITorchDialogState
               value={this.state.variableType}
               onChange={this._onSelectChange}
             >
-              <option value="0">Variable</option>
-              <option value="1">Function</option>
+              <option value="Table">Table</option>
+              <option value="Function">Function</option>
             </select>
           </p>
           <div className={filterWrapperClass}>
@@ -533,7 +533,7 @@ ITorchDialogState
        this.setState({
          name: '',
          filter: '',
-         variableType: "0"
+         variableType: "Table"
        });
      }
 
