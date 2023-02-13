@@ -136,12 +136,14 @@ class TorchHandler(APIHandler):
                 print('Access token set tha')
                 print(access_token)
                 print('User id token set tha')
+                print("select type")
+                print(input_data["variableType"])
                 #print(json.dumps(user_id, indent=1))            
                 #self.set_secure_cookie("access_token", access_token)
                 todo = {"torchName":input_data["variableTorchName"], "variableName": input_data["variableName"],
                 "lineCode": input_data["lineCode"],"serverPath": input_data["serverPath"],
                 "filePath": input_data["filePath"],"baseUrl": input_data["baseUrl"], "treeUrl": input_data["treeUrl"],
-                "creator":user_id}
+                "variableType": input_data["variableType"],"creator":user_id}
                 file_name = os.path.basename(input_data["filePath"])
                 file      = os.path.join(input_data["serverPath"], file_name)
                 file      = os.path.expanduser(file)
