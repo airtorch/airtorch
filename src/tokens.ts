@@ -192,6 +192,8 @@ export namespace Airtorch {
     baseUrl?: string;
 
     treeUrl?: string;
+     
+    variableType?: string;
   }
 
   /** Interface for TorchCheckout request result.
