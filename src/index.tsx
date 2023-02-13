@@ -44,7 +44,7 @@ import { AirtorchExtension } from './model';
 
 
 import { TorchDialog } from './components/TorchDialog';
-import { getVariable, TorchVariables } from './torchvariables';
+import { getNameFromLine, TorchVariables } from './torchvariables';
 import * as React from 'react';
 import { Airtorch } from './tokens';
 import { rainbowIcon } from './style/icons';
@@ -143,9 +143,10 @@ const plugin: JupyterFrontEndPlugin<void> = {
         let variableObject;
         let variableJson;
         cellArray.forEach((variableValue, variableIndex) => {
-          if(!variableValue.startsWith('#') && (variableValue.length > 0)) 
+          if(!variableValue.startsWith('#') && (variableValue.length > 0) &&(getNameFromLine(variableValue))) 
           {
-            let codeVariable = getVariable(variableValue);
+            //let codeVariable = getVariable(variableValue);
+            let codeVariable = getNameFromLine(variableValue);
             variableObject = new TorchVariables(codeVariable,codeVariable,variableValue,variableIndex);
             variableJson = variableObject.createJsonObject()
             variables.push(variableJson);
