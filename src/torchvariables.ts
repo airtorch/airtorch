@@ -14,6 +14,20 @@ export function getVariable(lineCode: string):string{
     return(variableCodeArrayNoNamesToDelete.join(' '));
 }
 
+export function getNameFromLine(lineCode: string):string{
+    const variableRegex = /(\w+)\s*=\s*/;
+    const functionRegex = /def\s+(\w+)\s*\(/;
+    let match;
+
+    if ((match = variableRegex.exec(lineCode)) !== null) {
+        return match[1];
+    } else if ((match = functionRegex.exec(lineCode)) !== null) {
+        return match[1];
+    } else {
+        return null;
+    }
+}
+
 export class TorchVariables implements Airtorch.IVariable
 {
     name: string;
