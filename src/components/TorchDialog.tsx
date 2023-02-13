@@ -139,6 +139,10 @@ export interface ITorchDialogProps {
       * Line number - Line number of the code
       */
      lineNumber: number;
+     /**
+      * Variable Type - 0 for Variable | 1 for Function
+      */
+      variableType: string;
 
 
   }
@@ -164,13 +168,14 @@ ITorchDialogState
         filter: '',
         error: '',
         lineCode: '',
-        lineNumber: -1
+        lineNumber: -1,
+        variableType: "0"
       };
   }
 
   componentDidMount(): void {
     try {
-      this.setState({ name: '' });
+      this.setState({ name: '' , variableType: "0"});
     } catch (err) {
       console.error(err);
     }
@@ -214,7 +219,17 @@ ITorchDialogState
             placeholder=""
             title={this.props.trans.__('Enter name for torched variable')}
           />
-          <p>{this.props.trans.__('Select variable to torch')}</p>
+          
+
+          <p>{this.props.trans.__('Select torch type and variable  :  ')}
+            <select
+              value={this.state.variableType}
+              onChange={this._onSelectChange}
+            >
+              <option value="0">Variable</option>
+              <option value="1">Function</option>
+            </select>
+          </p>
           <div className={filterWrapperClass}>
             <div className={filterClass}>
               <input
@@ -458,6 +473,18 @@ ITorchDialogState
     });
   };
 
+
+  /**
+   * Callback invoked upon a change to the torch name input element.
+   *
+   * @param event - event object
+   */
+  private _onSelectChange = (event: any): void => {
+    this.setState({
+      variableType: event.target.value
+    });
+  };
+
     /**
    * Creates a new torch.
    *
@@ -473,7 +500,8 @@ ITorchDialogState
          serverPath: this.props.serverPath,
          filePath: this.props.filePath,
          baseUrl: this.props.baseUrl,
-         treeUrl: this.props.treeUrl
+         treeUrl: this.props.treeUrl,
+         variableType: this.state.variableType
        };
   
     //   this.props.logger.log({
@@ -504,7 +532,8 @@ ITorchDialogState
        this._variableList.current.resetAfterIndex(0);
        this.setState({
          name: '',
-         filter: ''
+         filter: '',
+         variableType: "0"
        });
      }
 
