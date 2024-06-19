@@ -1,7 +1,6 @@
 # airtorch
 
 [![Github Actions Status](https://github.com/github_username/airtorch/workflows/Build/badge.svg)](https://github.com/github_username/airtorch/actions/workflows/build.yml)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/github_username/airtorch/main?urlpath=lab)
-airtorch khao, lambe ho jao
 
 This extension is composed of a Python package named `airtorch`
 for the server extension and a NPM package named `airtorch`
